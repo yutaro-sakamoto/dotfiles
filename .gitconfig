@@ -1,0 +1,8 @@
+[core]
+    editor = vim
+[alias]
+    br = branch
+    co = checkout
+    cm = commit
+    plog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    st = status
