@@ -9,5 +9,3 @@ do
     fi
     cp $target ~/
 done
-
-source ~/.bashrc
