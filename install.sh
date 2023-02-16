@@ -1,4 +1,4 @@
-targets='.bashrc .vimrc .gitconfig'
+targets='.bashrc .vimrc .gitconfig .tmux.conf'
 
 mkdir -p ~/.dotfiles/backup
 
