@@ -1,0 +1,25 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "workbench.action.previousEditor"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "workbench.action.nextEditor"
+    },
+    {
+        "key": "ctrl+m",
+        "command": "editor.action.insertLineAfter",
+        "when": "editorTextFocus"
+    },
+]
