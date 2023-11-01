@@ -10,6 +10,10 @@ function fish_prompt
     echo ' $ '
 end
 
+function gpsu
+    git push $argv[1] (g branch --contains | cut -d " " -f 2)
+end
+
 fish_ssh_agent
 
 alias fishrc='vim ~/.config/fish/config.fish'
