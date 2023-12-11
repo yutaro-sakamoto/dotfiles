@@ -4,7 +4,7 @@ end
 
 function fish_prompt
     set_color green
-    echo -n (prompt_pwd --dir-length=0)
+    echo -n (prompt_pwd)
     set_color normal
     fish_git_prompt
     echo ' $ '
