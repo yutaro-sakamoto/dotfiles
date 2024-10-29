@@ -10,6 +10,21 @@ function fish_prompt
     echo ' $ '
 end
 
+function syncfork
+    set REMOTE_REPO (git remote get-url fork | sed 's/^[^:]*://' | sed 's/\.[^.]*$//')
+    set REMOTE_REPO_DEFAULT_BRANCH (gh repo view $REMOTE_REPO --json defaultBranchRef -q .defaultBranchRef.name)
+    gh repo sync $REMOTE_REPO -b $REMOTE_REPO_DEFAULT_BRANCH
+end
+
+function syncforkpull
+    syncfork
+    set REMOTE_REPO (git remote get-url fork | sed 's/^[^:]*://' | sed 's/\.[^.]*$//')
+    set REMOTE_REPO_DEFAULT_BRANCH (gh repo view $REMOTE_REPO --json defaultBranchRef -q .defaultBranchRef.name)
+    git switch $REMOTE_REPO_DEFAULT_BRANCH
+    git pull fork $REMOTE_REPO_DEFAULT_BRANCH
+    git switch -
+end
+
 function gpsu
     git push $argv[1] (g branch --contains | cut -d " " -f 2) --set-upstream
 end

@@ -14,3 +14,19 @@ alias g='git'
 export PATH="$PATH:~/mycommand"
 
 export PS1="\e[0;32m[\w] \e[0m"
+
+function syncfork() {
+    local REMOTE_REPO="$(git remote get-url fork | sed 's/^[^:]*://' | sed 's/\.[^.]*$//')"
+    local REMOTE_REPO_DEFAULT_BRANCH="$(gh repo view $REMOTE_REPO --json defaultBranchRef -q .defaultBranchRef.name)"
+    gh repo sync $REMOTE_REPO -b $REMOTE_REPO_DEFAULT_BRANCH
+}
+
+function syncforkpull() {
+    syncfork
+    local REMOTE_REPO="$(git remote get-url fork | sed 's/^[^:]*://' | sed 's/\.[^.]*$//')"
+    local REMOTE_REPO_DEFAULT_BRANCH="$(gh repo view $REMOTE_REPO --json defaultBranchRef -q .defaultBranchRef.name)"
+    git switch $REMOTE_REPO_DEFAULT_BRANCH
+    git pull fork $REMOTE_REPO_DEFAULT_BRANCH
+    git switch -
+}
+
