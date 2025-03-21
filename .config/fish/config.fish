@@ -4,10 +4,23 @@ end
 
 function fish_prompt
     set_color green
-    echo -n (prompt_pwd)
+    echo -n (prompt_pwd --dir-length=0)
     set_color normal
     fish_git_prompt
-    echo ' $ '
+    if test "$AWS_DEFAULT_PROFILE" != ""
+        set_color red
+        echo -n '('"$AWS_DEFAULT_PROFILE"')'
+        set_color normal
+    end
+    echo -n ' $ '
+end
+
+function sapr
+    if test (count $argv) = 0
+        export AWS_DEFAULT_PROFILE=''
+    else
+        export AWS_DEFAULT_PROFILE=$argv
+    end
 end
 
 function syncfork
