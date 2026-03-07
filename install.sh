@@ -1,4 +1,4 @@
-targets='.bashrc .vimrc .gitconfig .tmux.conf'
+targets='.bashrc .vimrc .gitconfig .tmux.conf .config'
 
 mkdir -p ~/.dotfiles/backup
 
@@ -7,5 +7,5 @@ do
     if [ -e ~/$target ]; then
         cp ~/$target ~/.dotfiles/backup
     fi
-    cp $target ~/
+    cp -r $target ~/
 done
